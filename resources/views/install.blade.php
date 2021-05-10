@@ -1,5 +1,6 @@
 <?php
 use App\Libs\Cafe24\Cafe24Token;
+use \Illuminate\Support\Facades\DB;
 
 $client_id = (env('APP_ENV') == "production") ? env('CAFE24_APP_CLIENT_ID') : env('CAFE24_APP_CLIENT_ID_DEV');
 $client_secret = (env('APP_ENV') == "production") ? env('CAFE24_APP_CLIENT_SECRET') : env('CAFE24_APP_CLIENT_SECRET_DEV');
@@ -100,8 +101,8 @@ if (!empty($tokenData->error)) {
                 } else {
                     $cafe_mall_id = $shop["cafe_mall_id"];
                     $mall_id = $shop["id"];
-                    
-                    header('Location: /login');
+                    print_r($mall_id_installed);
+                    // header('Location: /login');
                 }
             }
             // var_dump($debug);
