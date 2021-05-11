@@ -101,8 +101,15 @@ if (!empty($tokenData->error)) {
                 } else {
                     $cafe_mall_id = $shop["cafe_mall_id"];
                     $mall_id = $shop["id"];
-                    print_r($mall_id_installed);
-                    // header('Location: /login');
+                    $users = DB::table('users')->where([
+                        "cafe24_mall_id" => $mall_id_installed,
+                    ])->get()->toArray();
+
+                    if(empty($users)){
+                        header('Location: /login');
+                    } else {
+                        echo 'Account is already synced';
+                    }
                 }
             }
             // var_dump($debug);

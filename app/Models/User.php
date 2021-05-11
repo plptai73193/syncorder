@@ -9,6 +9,7 @@ use App\Models\Log\MallAccessLog;
 class User extends BaseModel
 {
     protected $fillable = [
+        "cafe24_mall_id",
         "api_username",
         "secret_key",
         "created_at",

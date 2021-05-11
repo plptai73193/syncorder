@@ -29,4 +29,8 @@ Route::get("/test", function() {
     return view('test');
 });
 
+Route::get("/account_select", function() {
+    return view('account_select');
+});
+
 Route::post("/user", 'UserController@index')->name('user');

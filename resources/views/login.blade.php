@@ -1,3 +1,7 @@
+@php
+   use App\Libs\Cafe24\Cafe24Token;
+@endphp
+
 @extends('layout.master')
 @section('login_form')
    <div class="card">
@@ -5,6 +9,10 @@
       <div class="card-body">
          <form action="{{ route('user') }}" method="POST">
                @csrf
+               @php
+                   $installed_mall_id = Cafe24Token::getInstalledMallId($_SERVER["HTTP_REFERER"]);
+               @endphp
+               <input type="hidden" id="cafe24_mall_id" class="form-control" name="cafe24_mall_id" value="{{$installed_mall_id}}">
                <div class="form-group row">
                   <label for="email_address" class="col-md-4 col-form-label text-md-right">API Username</label>
                   <div class="col-md-6">

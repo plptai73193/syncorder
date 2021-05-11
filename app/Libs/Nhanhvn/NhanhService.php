@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Libs\Nhanhvn;
+
 /**
  * NhanhService
  *
@@ -39,8 +41,8 @@ class NhanhService
      *
      * @var string
      */
-    protected $server = "https://dev.nhanh.vn";
-//     protected $server = "https://graph.nhanh.vn";
+    // protected $server = "https://dev.nhanh.vn";
+    protected $server = "https://graph.nhanh.vn";
 
     /**
      * apiUsername
@@ -164,6 +166,7 @@ class NhanhService
             "data" => $dataString,
             "checksum" => $this->createChecksum($dataString)
         );
+
 
         $curl = curl_init($this->getServer() . $requestUri);
         curl_setopt($curl, CURLOPT_POST, 1);
