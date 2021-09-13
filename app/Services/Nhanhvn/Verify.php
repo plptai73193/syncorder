@@ -5,7 +5,7 @@ namespace App\Services\Nhanhvn;
 use App\Libs\Nhanhvn\NhanhService;
 use App\Services\Nhanhvn\AbstractClass\NhanhServiceAbstract;
 
-class Product extends NhanhServiceAbstract {
+class Verify extends NhanhServiceAbstract {
     
         
     /**
@@ -15,7 +15,7 @@ class Product extends NhanhServiceAbstract {
      *
      * @return array $result
      */
-    public function getProducts($param){
+    public function verify($param){
         $result = [
             "success" => false,
             "data" => [],
@@ -37,7 +37,7 @@ class Product extends NhanhServiceAbstract {
             $api_params['status'] = $param["status"];
         }
 
-        $response = $service->sendRequest(NhanhService::URI_GET_PRODUCT_SEARCH, $api_params, $storeId);
+        $response = $service->sendRequest(NhanhService::URI_SHIPPING_LOCATION, $api_params, $storeId);
 
         if($response->code) {
             $result["success"] = true;

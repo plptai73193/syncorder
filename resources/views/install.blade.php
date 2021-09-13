@@ -101,14 +101,17 @@ if (!empty($tokenData->error)) {
                 } else {
                     $cafe_mall_id = $shop["cafe_mall_id"];
                     $mall_id = $shop["id"];
+                    
                     $users = DB::table('users')->where([
                         "cafe24_mall_id" => $mall_id_installed,
                     ])->get()->toArray();
-
-                    if(empty($users)){
-                        header('Location: /login');
-                    } else {
-                        echo 'Account is already synced';
+                    
+                    if(empty($users)){ ?>
+                        @include('login', [
+                            'mall_id' => $mall_id_installed
+                        ])
+                    <?php } else {
+                        echo '<h1>Account is already synced</h1><p><a href="/login">Logout</a></p>';
                     }
                 }
             }
@@ -120,4 +123,3 @@ if (!empty($tokenData->error)) {
     <?php }
 }
 ?>
-
